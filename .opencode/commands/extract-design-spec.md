@@ -6,7 +6,8 @@ subtask: true
 
 Reference:
 
-design/
+@docs/reference/prd-draft.md
+@design/
 
 @docs/templates/FRONTEND_ARCHITECTURE_TEMPLATE.md
 

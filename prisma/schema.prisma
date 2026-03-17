@@ -1,0 +1,194 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum AuthProvider {
+  credentials
+  google
+}
+
+enum ProjectStatus {
+  draft
+  ready
+  archived
+}
+
+enum SceneStatus {
+  uploaded
+  queued
+  processing
+  ready
+  failed
+}
+
+enum AssetType {
+  original
+  thumbnail
+  layer
+  composite
+  manifest
+}
+
+enum JobType {
+  decomposition
+  motion
+  stitching
+}
+
+enum JobStatus {
+  queued
+  processing
+  ready
+  failed
+}
+
+enum ExportStatus {
+  pending
+  locked
+  ready
+  failed
+}
+
+model User {
+  id           String       @id @default(uuid()) @db.Uuid
+  email        String       @unique
+  authProvider AuthProvider @map("auth_provider")
+  passwordHash String?      @map("password_hash")
+  projects     Project[]
+  createdAt    DateTime     @default(now()) @map("created_at")
+  updatedAt    DateTime     @updatedAt @map("updated_at")
+
+  @@map("users")
+}
+
+model GuestSession {
+  id              String    @id @default(uuid()) @db.Uuid
+  expiresAt       DateTime  @map("expires_at")
+  claimedAt       DateTime? @map("claimed_at")
+  claimedByUserId String?   @db.Uuid @map("claimed_by_user_id")
+  lastSeenAt      DateTime  @default(now()) @map("last_seen_at")
+  projects        Project[]
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+
+  @@index([expiresAt])
+  @@index([claimedByUserId])
+  @@map("guest_sessions")
+}
+
+model Project {
+  id                  String         @id @default(uuid()) @db.Uuid
+  ownerId             String?        @db.Uuid @map("owner_id")
+  guestSessionId      String?        @db.Uuid @map("guest_session_id")
+  title               String
+  globalContext       String?        @map("global_context")
+  stylePreset         String?        @map("style_preset")
+  outputFormat        String         @default("9:16") @map("output_format")
+  status              ProjectStatus  @default(draft)
+  scrollEngineVersion String?        @map("scroll_engine_version")
+  expiresAt           DateTime?      @map("expires_at")
+  claimedAt           DateTime?      @map("claimed_at")
+  claimedByUserId     String?        @db.Uuid @map("claimed_by_user_id")
+  owner               User?          @relation(fields: [ownerId], references: [id])
+  guestSession        GuestSession?  @relation(fields: [guestSessionId], references: [id])
+  scenes              Scene[]
+  playbackPlans       PlaybackPlan[]
+  createdAt           DateTime       @default(now()) @map("created_at")
+  updatedAt           DateTime       @updatedAt @map("updated_at")
+
+  @@index([ownerId])
+  @@index([guestSessionId])
+  @@index([status])
+  @@index([expiresAt])
+  @@index([claimedByUserId])
+  @@map("projects")
+}
+
+model Scene {
+  id                String       @id @default(uuid()) @db.Uuid
+  projectId         String       @db.Uuid @map("project_id")
+  orderIndex        Int          @map("order_index")
+  generationVersion Int          @default(1) @map("generation_version")
+  sourceImageUrl    String?      @map("source_image_url")
+  thumbnailUrl      String?      @map("thumbnail_url")
+  contextText       String?      @map("context_text")
+  motionPreset      String?      @map("motion_preset")
+  motionIntensity   String?      @map("motion_intensity")
+  motionBlueprintJson Json?      @map("motion_blueprint_json")
+  status            SceneStatus  @default(uploaded)
+  framingData       Json?        @map("framing_data")
+  mobileRenderHints Json?        @map("mobile_render_hints")
+  expiresAt         DateTime?    @map("expires_at")
+  project           Project      @relation(fields: [projectId], references: [id])
+  assets            SceneAsset[]
+  processingJobs    ProcessingJob[]
+  createdAt         DateTime     @default(now()) @map("created_at")
+  updatedAt         DateTime     @updatedAt @map("updated_at")
+
+  @@index([projectId])
+  @@index([status])
+  @@unique([projectId, orderIndex])
+  @@map("scenes")
+}
+
+model SceneAsset {
+  id           String    @id @default(uuid()) @db.Uuid
+  sceneId      String    @db.Uuid @map("scene_id")
+  assetType    AssetType @map("asset_type")
+  assetUrl     String    @map("asset_url")
+  width        Int?
+  height       Int?
+  layerOrder   Int?      @map("layer_order")
+  metadataJson Json?     @map("metadata_json")
+  expiresAt    DateTime? @map("expires_at")
+  scene        Scene     @relation(fields: [sceneId], references: [id])
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+
+  @@index([sceneId])
+  @@index([assetType])
+  @@map("scene_assets")
+}
+
+model ProcessingJob {
+  id           String    @id @default(uuid()) @db.Uuid
+  sceneId      String    @db.Uuid @map("scene_id")
+  jobType      JobType   @map("job_type")
+  status       JobStatus @default(queued)
+  providerJobId String?  @map("provider_job_id")
+  correlationId String?  @map("correlation_id")
+  attemptCount Int       @default(0) @map("attempt_count")
+  errorMessage String?   @map("error_message")
+  metadataJson  Json?    @map("metadata_json")
+  startedAt    DateTime? @map("started_at")
+  completedAt  DateTime? @map("completed_at")
+  scene        Scene     @relation(fields: [sceneId], references: [id])
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+
+  @@index([sceneId])
+  @@index([status])
+  @@index([sceneId, jobType, status])
+  @@map("processing_jobs")
+}
+
+model PlaybackPlan {
+  id           String       @id @default(uuid()) @db.Uuid
+  projectId    String       @db.Uuid @map("project_id")
+  version      Int          @default(1)
+  timelineJson Json         @map("timeline_json")
+  isReducedMotion Boolean   @default(false) @map("is_reduced_motion")
+  isFallback      Boolean   @default(false) @map("is_fallback")
+  exportStatus ExportStatus @default(pending) @map("export_status")
+  project      Project      @relation(fields: [projectId], references: [id])
+  createdAt    DateTime     @default(now()) @map("created_at")
+  updatedAt    DateTime     @updatedAt @map("updated_at")
+
+  @@index([projectId])
+  @@map("playback_plans")
+}

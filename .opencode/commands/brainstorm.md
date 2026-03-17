@@ -233,7 +233,7 @@ Ensure the document now contains:
 
 Write the structured document to:
 
-docs/reference/brainstorm-prd-draft.md
+docs/reference/prd-draft.md
 
 Create directory if missing.
 
