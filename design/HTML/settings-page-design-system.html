@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings - Parallax Story Composer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#38f91a",
+                        "background-light": "#f6f8f5",
+                        "background-dark": "#0a0c0b",
+                        "panel": "#1a1d1c",
+                        "border-mute": "#2a2d2c"
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Navbar -->
+<header class="flex items-center justify-between border-b border-border-mute px-6 py-4 lg:px-20 bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-6">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-slate-100 text-xl font-bold tracking-tight">Parallax</h2>
+</div>
+<nav class="hidden md:flex flex-1 justify-center gap-10">
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Home</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Projects</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">New Project</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary pb-1" href="#">Settings</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-panel transition-colors text-slate-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-border-mute" data-alt="User profile avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDdYMuRcbYMZ53rH8F7Om2_A06_pHYPo8feeV_QvlKYFo3er1VtOoEMrCjdNu73dn9TIVUEx2jXqbnCJA-Uny_nyO4sswqdNVpdZwV8mBU8JItf61LXRTeBm6GwdQSXE3wyvqau5SIuN92ab_GI2xAveorfen9QRTXWu6BiFlnYB-GxK97IFsz2QGwyjCXWdYUITyAsnd1_tx499SRor49m3q1vmRIW7dRwTFnnJIgs_WJWA678IXEaih5D0khbt3g41CA3rQeK9wk");'></div>
+</div>
+</header>
+<main class="flex-1 px-6 py-10 lg:px-20 max-w-5xl mx-auto w-full">
+<!-- Header Section -->
+<div class="mb-12">
+<h1 class="text-white text-5xl font-black tracking-tighter mb-4">Settings</h1>
+<p class="text-slate-400 text-lg max-w-2xl">Manage your account details and app preferences for a tailored creative experience.</p>
+</div>
+<div class="space-y-12">
+<!-- Account Information -->
+<section class="bg-panel p-8 rounded-xl border border-border-mute">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary">person</span>
+<h2 class="text-white text-2xl font-bold tracking-tight">Account Information</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<label class="flex flex-col gap-2">
+<span class="text-slate-300 text-sm font-medium uppercase tracking-wider">Display Name</span>
+<input class="form-input rounded-lg border-border-mute bg-background-dark text-white focus:border-primary focus:ring-1 focus:ring-primary h-12 px-4" type="text" value="Alex Creator"/>
+</label>
+<label class="flex flex-col gap-2">
+<span class="text-slate-300 text-sm font-medium uppercase tracking-wider">Email Address</span>
+<input class="form-input rounded-lg border-border-mute bg-background-dark text-white focus:border-primary focus:ring-1 focus:ring-primary h-12 px-4" type="email" value="alex@parallax.studio"/>
+</label>
+<div class="md:col-span-2 pt-4">
+<button class="flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors">
+<span class="material-symbols-outlined text-sm">lock_reset</span>
+                                    Change Password
+                                </button>
+</div>
+</div>
+</section>
+<!-- App Preferences -->
+<section class="bg-panel p-8 rounded-xl border border-border-mute">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary">tune</span>
+<h2 class="text-white text-2xl font-bold tracking-tight">App Preferences</h2>
+</div>
+<div class="space-y-8">
+<!-- Accessibility -->
+<div class="flex items-center justify-between py-4 border-b border-border-mute/50">
+<div>
+<p class="text-white font-medium">Reduced Motion</p>
+<p class="text-slate-400 text-sm">Minimize UI animations for a simpler experience.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Default Story Pace -->
+<label class="flex flex-col gap-3">
+<span class="text-slate-300 text-sm font-medium uppercase tracking-wider">Default Story Pace</span>
+<select class="form-select rounded-lg border-border-mute bg-background-dark text-white focus:border-primary focus:ring-1 focus:ring-primary h-12 px-4">
+<option>Calm</option>
+<option selected="">Balanced</option>
+<option>Fast</option>
+</select>
+</label>
+<!-- Transition Style -->
+<label class="flex flex-col gap-3">
+<span class="text-slate-300 text-sm font-medium uppercase tracking-wider">Default Transition Style</span>
+<select class="form-select rounded-lg border-border-mute bg-background-dark text-white focus:border-primary focus:ring-1 focus:ring-primary h-12 px-4">
+<option selected="">Smooth Crossfade</option>
+<option>Hard Cut</option>
+<option>Slide Vertical</option>
+<option>Glitch Shift</option>
+</select>
+</label>
+<!-- Motion Preset -->
+<label class="flex flex-col gap-3">
+<span class="text-slate-300 text-sm font-medium uppercase tracking-wider">Default Motion Preset</span>
+<select class="form-select rounded-lg border-border-mute bg-background-dark text-white focus:border-primary focus:ring-1 focus:ring-primary h-12 px-4">
+<option>Static Zoom</option>
+<option selected="">Deep Parallax</option>
+<option>Floating Pan</option>
+</select>
+</label>
+<!-- Output Format (Locked) -->
+<label class="flex flex-col gap-3 opacity-60">
+<span class="text-slate-300 text-sm font-medium uppercase tracking-wider flex items-center gap-2">
+                                        Output Format <span class="material-symbols-outlined text-xs">lock</span>
+</span>
+<input class="form-input rounded-lg border-border-mute bg-background-dark/50 text-slate-500 cursor-not-allowed h-12 px-4" disabled="" type="text" value="9:16 Vertical Story"/>
+</label>
+</div>
+</div>
+</section>
+<!-- Session Management -->
+<section class="bg-panel p-8 rounded-xl border border-border-mute">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-red-500">logout</span>
+<h2 class="text-white text-2xl font-bold tracking-tight">Session</h2>
+</div>
+<p class="text-slate-400 mb-6">Logged in from San Francisco, CA. Last active 2 minutes ago.</p>
+<button class="px-6 py-2 rounded-lg border border-red-500/50 text-red-500 hover:bg-red-500/10 transition-colors font-medium">
+                            Sign Out of All Devices
+                        </button>
+</section>
+<!-- Bottom Actions -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 pb-20">
+<div class="flex gap-4">
+<button class="px-8 h-12 rounded-lg bg-primary text-background-dark font-bold hover:brightness-110 transition-all shadow-lg shadow-primary/20">
+                                Save Changes
+                            </button>
+<button class="px-8 h-12 rounded-lg bg-transparent border border-border-mute text-slate-300 font-medium hover:bg-panel transition-colors">
+                                Reset Defaults
+                            </button>
+</div>
+<button class="flex items-center gap-2 text-slate-500 hover:text-white transition-colors group">
+<span class="material-symbols-outlined text-red-500 group-hover:scale-110 transition-transform">logout</span>
+                            Sign Out
+                        </button>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

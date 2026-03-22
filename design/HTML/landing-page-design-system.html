@@ -1,0 +1,338 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Parallax Story Composer - Cinematic Image Motion</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#38f91a",
+                        "background-light": "#f6f8f5",
+                        "background-dark": "#0a0c0b",
+                        "surface": "#1a1d1c",
+                        "surface-light": "#2a2e2d",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(56, 249, 26, 0.3);
+        }
+        .neon-border {
+            border: 1px solid rgba(56, 249, 26, 0.5);
+        }
+        .glass-panel {
+            background: rgba(26, 29, 28, 0.8);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden">
+<!-- Global Navbar -->
+<header class="sticky top-0 z-50 w-full border-b border-white/10 glass-panel">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-background-dark">
+<span class="material-symbols-outlined font-bold" style="">layers</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight text-slate-100" style="">Parallax <span class="text-primary" style="">Story</span> Composer</h1>
+</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="text-sm font-medium hover:text-primary transition-colors text-slate-300" href="#" style="">Dashboard</a>
+<a class="text-sm font-medium hover:text-primary transition-colors text-slate-300" href="#" style="">Projects</a>
+<a class="text-sm font-medium hover:text-primary transition-colors text-slate-300" href="#" style="">New Project</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="px-5 py-2 rounded-lg border border-primary/50 text-primary text-sm font-bold hover:bg-primary/10 transition-all" style="">
+                    Sign In
+                </button>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative pt-20 pb-32 overflow-hidden">
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="space-y-8">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold tracking-widest uppercase" style="">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+                        Next-Gen Cinematic Engine
+                    </div>
+<h1 class="text-5xl md:text-7xl font-bold leading-[1.1] tracking-tight text-white" style="">
+                        Transform Still Images into <span class="text-primary" style="">Cinematic</span> Parallax Stories
+                    </h1>
+<p class="text-lg text-slate-400 max-w-xl leading-relaxed" style="">
+                        Upload your high-res photos and watch them come to life with our automated layered stitching engine. Build immersive 2.5D scenes with professional motion planning in minutes.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 pt-4">
+<button class="px-8 py-4 rounded-xl bg-primary text-background-dark font-bold text-lg hover:scale-105 transition-transform neon-glow" style="">
+                            Start Free as Guest
+                        </button>
+<button class="px-8 py-4 rounded-xl border border-primary/30 text-white font-bold text-lg hover:bg-primary/5 transition-colors" style="">
+                            Create Account
+                        </button>
+</div>
+<div class="pt-2">
+<a class="text-slate-500 hover:text-primary transition-colors text-sm underline underline-offset-4" href="#" style="">Already have an account? Log In</a>
+</div>
+</div>
+<!-- Hero Visual: Mock Player -->
+<div class="relative group">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary/50 to-emerald-500/50 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+<div class="relative bg-surface rounded-2xl border border-white/10 overflow-hidden aspect-[9/16] max-h-[700px] mx-auto shadow-2xl">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Mountain landscape with depth layers for parallax" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuARa_R0UxUaViwpyRxqB6fNeCk4IoirR9zhAJfhXpo8vf--Dw0n1DOWlMwLt6A4Wsf9ON5qNiwuJE5qUvPJZrpAewg46MfAz7PyYBWfqpquJB5fNJ5QiQsPxT_zW7qR4sVQB-uiQPcba5TCVqVe6zouhN6s5oqp-ttaBiD9wbzFaQhjrMoJ7xdoZR2x8T-O3WLHPueOoi9OLSmOA0XG4ScsaQzxQlj-J58Sj_R0t3weAFme-XX8-p1b9d3hcTmo4BqTnpDYGd9XpK8&quot;);"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 via-transparent to-transparent"></div>
+<!-- Editor Overlays -->
+<div class="absolute top-6 left-6 right-6 flex justify-between items-center">
+<div class="bg-black/50 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 text-[10px] font-bold tracking-widest text-primary uppercase" style="">Scene 01: The Peak</div>
+<div class="flex gap-2">
+<div class="size-8 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center border border-white/10">
+<span class="material-symbols-outlined text-sm" style="">layers</span>
+</div>
+</div>
+</div>
+<!-- Motion Path Visualizer -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<svg class="w-full h-full opacity-50" viewBox="0 0 400 700">
+<path d="M50,600 C150,550 250,650 350,500" fill="none" stroke="#38f91a" stroke-dasharray="8 8" stroke-width="2"></path>
+<circle cx="350" cy="500" fill="#38f91a" r="6"></circle>
+<text fill="#38f91a" font-size="12" font-weight="bold" x="310" y="485">PAN END</text>
+</svg>
+</div>
+<div class="absolute bottom-6 left-6 right-6 space-y-4">
+<div class="h-1 bg-white/20 rounded-full overflow-hidden">
+<div class="w-2/3 h-full bg-primary neon-glow"></div>
+</div>
+<div class="flex justify-between items-center text-white font-mono text-xs">
+<span class="" style="">00:12:45</span>
+<div class="flex gap-4">
+<span class="material-symbols-outlined" style="">fast_rewind</span>
+<span class="material-symbols-outlined fill-current text-primary" style="">play_arrow</span>
+<span class="material-symbols-outlined" style="">fast_forward</span>
+</div>
+<span class="" style="">00:20:00</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works -->
+<section class="py-24 bg-surface/30">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16 space-y-4">
+<h2 class="text-4xl font-bold text-white tracking-tight" style="">How It Works</h2>
+<p class="text-slate-400" style="">Master the art of visual storytelling in four simple steps</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Step 1 -->
+<div class="space-y-4 group">
+<div class="relative aspect-square rounded-2xl overflow-hidden border border-white/5 bg-surface group-hover:border-primary/50 transition-colors">
+<div class="absolute inset-0 bg-cover bg-center opacity-60" data-alt="High resolution nature photography upload" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuArwtni54PHapKEODx6doVeYttx5JaLYaiyzVzVxJQCraahqK5B_ACiJgSbkrOLcC0ZbqdQlJx-rmd2kQvwG1-EmF8KTG_BSIYo2yCtVGJus5TvBwVYS7WrJ3JnXCtUMBlPz1qdSuHOYC4LNOj_r3vWDfZBB9cbaKIcArFrg7u_kogSE374avb2J-u14aSDUeL662VB7FPgqGTFOCa15hCh280wXjeXhlwM3PjWItwFYI0L_X0Q__ezWk4rLSks-Ou1shdfKq_SUDw&quot;);"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="size-16 rounded-full bg-background-dark/80 backdrop-blur-xl border border-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-primary" style="">upload_file</span>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white" style="">1. Upload</h3>
+<p class="text-slate-400 text-sm leading-relaxed" style="">Import your high-res RAW or JPEG images to the composer engine.</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="space-y-4 group">
+<div class="relative aspect-square rounded-2xl overflow-hidden border border-white/5 bg-surface group-hover:border-primary/50 transition-colors">
+<div class="absolute inset-0 bg-cover bg-center opacity-60" data-alt="Forest layers being separated" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuD56SjIME50ktrzigeVWGdMX-zfGgaKhukwG41jVLRAGlXbcoJnWnzNuPUjyK7cswMh30ggMAuBet2puze3Vh25I9OUIvhfWyGDrNC40trQvpAppBfWXuYrwhNsFVoo2erQ04lPcVx-AbU_TGVVs-q_BaFiIGCrxJt1p3GWgk4D_ICRLDnGz07XgC5lZ42Q7BfJRwtxqquFrZMTI1Kq-MZjXHo2bH_lFDPbhB1VZwE6haRVpEc1I04HZC85dg4owW67kFcm2BQswkM&quot;);"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="size-16 rounded-full bg-background-dark/80 backdrop-blur-xl border border-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-primary" style="">stack</span>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white" style="">2. Build Scenes</h3>
+<p class="text-slate-400 text-sm leading-relaxed" style="">Define foreground, midground, and background layers with AI masking.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="space-y-4 group">
+<div class="relative aspect-square rounded-2xl overflow-hidden border border-white/5 bg-surface group-hover:border-primary/50 transition-colors">
+<div class="absolute inset-0 bg-cover bg-center opacity-60" data-alt="Motion path arrows over a lake scene" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAgxdharMz3IZdeOQyRQ9KI3S0s7fkz7j13d5b_M_lUVzltbfbU9u7El40vNINGJSrtWoNCPRNb5ll5OFOMQ0V_pmLCb6fvbCGmd5tTBMy3G3Q2AvMdkOI6XbpALrGJZiMqDIKiyUo1lYImI1l7alXRYKt6DAuLMLpnWyw-BLQpHn3_9t0RiaJ1q0ed4jcNOgdHzKbO9Y6Wu9lKkAHrV3gogS7xD480bdBvTePyxAnUgAlNNA-JYlwJ-VtBCoNfJjw0K--ml_ONqjQ&quot;);"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="size-16 rounded-full bg-background-dark/80 backdrop-blur-xl border border-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-primary" style="">movie_edit</span>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white" style="">3. Motion Direction</h3>
+<p class="text-slate-400 text-sm leading-relaxed" style="">Set cinematic pan, zoom, and tilt paths for each individual layer.</p>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="space-y-4 group">
+<div class="relative aspect-square rounded-2xl overflow-hidden border border-white/5 bg-surface group-hover:border-primary/50 transition-colors">
+<div class="absolute inset-0 bg-cover bg-center opacity-60" data-alt="Final stitched video preview" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBIp7VIb2LyIPZtzjv8G9rIVxe5qQJYbhBdjZlodEMmiNj50qo4JzhLchvFzvbLKuyJS_TK7faZrfoGYFW2WQ3lAN0BwHQLHlvV-eo8nG6GLLOw8QiKAf1IdixT3zOTfFwKlhOPRWtaGoWBEdYTiMxYkFV9HN2Y-B4C4Zk-6KQ1iCiEMlTK7i63DDWST7Ali3WkrxxLMngB4PMRaSTwdSvThtrnt4GlAqGM7s9Ad9CdnKo1aWw_5z5ZVEXT2KTKXa7DH2UIMjk8ddc&quot;);"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="size-16 rounded-full bg-background-dark/80 backdrop-blur-xl border border-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-primary" style="">play_circle</span>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white" style="">4. Preview Story</h3>
+<p class="text-slate-400 text-sm leading-relaxed" style="">Watch the fully stitched story and export in up to 4K resolution.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature Highlights -->
+<section class="py-24">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="space-y-12">
+<h2 class="text-4xl font-bold text-white tracking-tight" style="">Pro Tools for Immersive Motion</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+<div class="space-y-3">
+<span class="material-symbols-outlined text-primary text-3xl" style="">view_quilt</span>
+<h4 class="text-lg font-bold text-white" style="">Scene Manager</h4>
+<p class="text-slate-400 text-sm" style="">Organize complex stories into multiple sequenced scenes with smooth transitions.</p>
+</div>
+<div class="space-y-3">
+<span class="material-symbols-outlined text-primary text-3xl" style="">auto_fix_high</span>
+<h4 class="text-lg font-bold text-white" style="">AI Layer Decomposition</h4>
+<p class="text-slate-400 text-sm" style="">Automatically extract subjects and fill in backgrounds using generative infilling.</p>
+</div>
+<div class="space-y-3">
+<span class="material-symbols-outlined text-primary text-3xl" style="">draw</span>
+<h4 class="text-lg font-bold text-white" style="">Motion Planning</h4>
+<p class="text-slate-400 text-sm" style="">Bezier-curve motion paths for organic, non-linear camera movements.</p>
+</div>
+<div class="space-y-3">
+<span class="material-symbols-outlined text-primary text-3xl" style="">swipe_down_alt</span>
+<h4 class="text-lg font-bold text-white" style="">Stitched Scroll Engine</h4>
+<p class="text-slate-400 text-sm" style="">Web-ready exports that react to user scrolling for interactive long-form stories.</p>
+</div>
+</div>
+</div>
+<div class="bg-surface rounded-2xl border border-white/10 p-8 space-y-6">
+<div class="flex items-center gap-4 border-b border-white/5 pb-6">
+<div class="size-12 rounded-lg bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="">info</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white leading-tight" style="">GUEST ACCESS</h3>
+<p class="text-slate-500 text-sm" style="">Preview mode enabled</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-3 text-slate-300">
+<span class="material-symbols-outlined text-primary" style="">check_circle</span>
+<span class="text-sm" style="">Real-time Parallax Preview</span>
+</div>
+<div class="flex items-center gap-3 text-slate-300">
+<span class="material-symbols-outlined text-primary" style="">check_circle</span>
+<span class="text-sm" style="">Basic Motion Keyframing</span>
+</div>
+<div class="flex items-center gap-3 text-slate-500">
+<span class="material-symbols-outlined" style="">lock</span>
+<span class="text-sm italic" style="">Cloud Project Saving</span>
+</div>
+<div class="flex items-center gap-3 text-slate-500">
+<span class="material-symbols-outlined" style="">lock</span>
+<span class="text-sm italic" style="">High-Res Video Export (MP4/WebM)</span>
+</div>
+</div>
+<button class="w-full py-4 rounded-xl bg-primary/10 border border-primary text-primary font-bold hover:bg-primary/20 transition-all" style="">
+                            Unlock Full Features
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-24 relative overflow-hidden">
+<div class="absolute inset-0 bg-primary/5 opacity-50"></div>
+<div class="max-w-4xl mx-auto px-6 text-center space-y-8 relative z-10">
+<h2 class="text-4xl md:text-5xl font-bold text-white" style="">Ready to bring your images to life?</h2>
+<p class="text-slate-400 text-lg" style="">Join thousands of creators building cinematic experiences without leaving their browser.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="px-10 py-4 rounded-xl bg-primary text-background-dark font-bold text-xl hover:scale-105 transition-transform neon-glow" style="">
+                        Create Your Story
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-background-dark border-t border-white/10 pt-20 pb-12">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+<div class="col-span-1 md:col-span-2 space-y-6">
+<div class="flex items-center gap-3">
+<div class="size-6 bg-primary rounded flex items-center justify-center text-background-dark">
+<span class="material-symbols-outlined text-sm font-bold" style="">layers</span>
+</div>
+<h3 class="text-lg font-bold text-white" style="">Parallax Story Composer</h3>
+</div>
+<p class="text-slate-500 max-w-sm text-sm leading-relaxed" style="">
+                        The ultimate tool for photographers and digital artists to create depth-based cinematic experiences.
+                    </p>
+<div class="flex gap-4">
+<a class="size-10 rounded-full border border-white/10 flex items-center justify-center text-slate-400 hover:text-primary transition-colors" href="#" style="">
+<span class="material-symbols-outlined" style="">public</span>
+</a>
+<a class="size-10 rounded-full border border-white/10 flex items-center justify-center text-slate-400 hover:text-primary transition-colors" href="#" style="">
+<span class="material-symbols-outlined" style="">video_library</span>
+</a>
+</div>
+</div>
+<div class="space-y-6">
+<h4 class="text-white font-bold" style="">Product</h4>
+<ul class="space-y-4 text-slate-500 text-sm">
+<li class="" style=""><a class="hover:text-primary" href="#" style="">Features</a></li>
+<li class="" style=""><a class="hover:text-primary" href="#" style="">Tutorials</a></li>
+<li class="" style=""><a class="hover:text-primary" href="#" style="">Gallery</a></li>
+<li class="" style=""><a class="hover:text-primary" href="#" style="">Pricing</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h4 class="text-white font-bold" style="">Resources</h4>
+<ul class="space-y-4 text-slate-500 text-sm">
+<li class="" style=""><a class="hover:text-primary" href="#" style="">Documentation</a></li>
+<li class="" style=""><a class="hover:text-primary" href="#" style="">API Reference</a></li>
+<li class="" style=""><a class="hover:text-primary" href="#" style="">Community</a></li>
+<li class="" style=""><a class="hover:text-primary" href="#" style="">Support</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-600 text-xs">
+<p class="" style="">© 2024 Parallax Story Composer. All rights reserved.</p>
+<div class="flex gap-8">
+<a class="hover:text-slate-400" href="#" style="">Privacy Policy</a>
+<a class="hover:text-slate-400" href="#" style="">Terms of Service</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

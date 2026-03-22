@@ -1,0 +1,245 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13", // Theme default primary, but user requested neon green accents
+                        "accent-green": "#39ff14", // Vivid neon green for accents
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#121212", // Deep charcoal background
+                        "panel-dark": "#1e1e1e", // Layered graphite panel
+                        "border-dark": "#2d2d2d"
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined { font-size: 20px; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #2d2d2d; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background-dark text-slate-100 font-display">
+<div class="flex h-screen w-full flex-col overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="flex h-14 items-center justify-between border-b border-border-dark bg-panel-dark px-6">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2 text-accent-green">
+<span class="material-symbols-outlined text-3xl" style="">auto_awesome_motion</span>
+<h1 class="text-lg font-bold tracking-tight text-slate-100" style="">Parallax Story Composer</h1>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium text-slate-400 hover:text-accent-green" href="#" style="">Dashboard</a>
+<a class="text-sm font-medium text-slate-400 hover:text-accent-green" href="#" style="">Projects</a>
+<a class="text-sm font-medium text-slate-400 hover:text-accent-green" href="#" style="">New Project</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center rounded-lg bg-border-dark p-2 text-slate-300 hover:text-white" style="">
+<span class="material-symbols-outlined" style="">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary/20 bg-cover bg-center" data-alt="User profile avatar portrait" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBpgJ9_WBpUF7PyF6u-V-zI1nRKrC5GrCVezS7Jm7IUIPOeVubtUWHHz1PbKOl1Y23sJYUd66TpCrAgmaVSCzTacjS7JE7aT8tXZzz5HrR8p-9QqbN9thfkQkyIkWReHNueEqLs8O_pEKPk7yTIu8MVtM4MT2tF0La9FZ-prX9Rzj4oY5NKur1KkYCrxWH5e4b_TU0bf0_6uBSIXzd2Nj_27Q-YkQvPCRU2FTDFbDIAQJ2yT8_dMEo7OxogAM588NVUEdf_BK0jZMU&quot;);"></div>
+</div>
+</header>
+<!-- Project Action Bar -->
+<div class="flex h-16 items-center justify-between border-b border-border-dark bg-background-dark/50 px-6 backdrop-blur-md">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center rounded-lg p-2 text-slate-400 hover:bg-panel-dark hover:text-white" style="">
+<span class="material-symbols-outlined" style="">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<input class="bg-transparent text-lg font-bold text-slate-100 border-none focus:ring-0 p-0 w-64" type="text" value="Sunset over Amalfi Coast">
+<span class="rounded-full bg-slate-800 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 border border-slate-700" style="">Draft</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 rounded-lg border border-border-dark bg-panel-dark px-4 py-2 text-sm font-medium text-slate-300 hover:bg-slate-800" style="">
+<span class="material-symbols-outlined" style="">save</span> Save
+                </button>
+<button class="flex items-center gap-2 rounded-lg border border-border-dark bg-panel-dark px-4 py-2 text-sm font-medium text-slate-300 hover:bg-slate-800" style="">
+<span class="material-symbols-outlined" style="">visibility</span> Preview
+                </button>
+<button class="flex items-center gap-2 rounded-lg border border-border-dark bg-panel-dark px-4 py-2 text-sm font-medium text-slate-300 hover:bg-slate-800" style="">
+<span class="material-symbols-outlined" style="">ios_share</span> Export
+                </button>
+<button class="flex items-center gap-2 rounded-lg bg-accent-green px-5 py-2 text-sm font-bold text-background-dark shadow-[0_0_15px_rgba(57,255,20,0.3)] hover:brightness-110" style="">
+<span class="material-symbols-outlined" style="">bolt</span> Generate
+                </button>
+</div>
+</div>
+<!-- Main Layout -->
+<main class="flex flex-1 overflow-hidden">
+<!-- Left Sidebar: Scene Manager -->
+<aside class="flex w-72 flex-col border-r border-border-dark bg-panel-dark">
+<div class="p-4 border-b border-border-dark">
+<button class="flex w-full flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-border-dark p-6 text-slate-400 hover:border-accent-green/50 hover:text-accent-green transition-colors" style="">
+<span class="material-symbols-outlined text-3xl" style="">upload_file</span>
+<span class="text-xs font-bold uppercase tracking-widest" style="">Upload Images</span>
+</button>
+</div>
+<div class="flex flex-1 flex-col gap-3 overflow-y-auto p-4 custom-scrollbar">
+<h3 class="text-[10px] font-bold uppercase tracking-widest text-slate-500" style="">Timeline Scenes</h3>
+<!-- Scene 01 -->
+<div class="group relative flex flex-col gap-2 rounded-xl bg-slate-800/40 p-2 border-2 border-accent-green/40">
+<div class="absolute -left-1 top-1/2 -translate-y-1/2 cursor-grab opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined text-slate-500" style="">drag_indicator</span>
+</div>
+<div class="relative aspect-[9/16] w-full overflow-hidden rounded-lg bg-slate-900 shadow-lg">
+<div class="h-full w-full bg-cover bg-center" data-alt="Cinematic drone shot of Amalfi Coast at sunset" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuA_v-7Nh0QR3utisJ4w0r88BIYx6IX78iUm2k3BMD86cmSlRTdr5eWbAyhuKJ4pDUQirkcRuzuZlD5A-0SNcnb_WGptKr-awW7jdxRTEFfw-uPrba4BVBgHvWKqfC7SvrZWCV_acNlnP2hkO6nE97djfCQFR_acNEzp2pIHXiU0QYv6buWNgUhDVbcOumCH_rFHYY65iOXfETauR6Yw7r5uvBSgTxPlGBt905IT-f2d47QmVmTnV55IcjdUcyMZtIvLO8_3eF78Amk&quot;);"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-2 left-2 flex items-center gap-1.5 rounded-full bg-accent-green/20 px-2 py-0.5 backdrop-blur-md">
+<div class="h-1.5 w-1.5 rounded-full bg-accent-green"></div>
+<span class="text-[10px] font-bold text-accent-green" style="">READY</span>
+</div>
+</div>
+<div class="flex items-center justify-between px-1">
+<span class="text-xs font-medium text-slate-200" style="">Scene 01</span>
+<div class="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="material-symbols-outlined text-xs text-slate-500 hover:text-white" style="">refresh</button>
+<button class="material-symbols-outlined text-xs text-slate-500 hover:text-red-400" style="">delete</button>
+</div>
+</div>
+</div>
+<!-- Scene 02 -->
+<div class="group relative flex flex-col gap-2 rounded-xl bg-slate-800/20 p-2 border border-border-dark">
+<div class="relative aspect-[9/16] w-full overflow-hidden rounded-lg bg-slate-900">
+<div class="h-full w-full bg-cover bg-center grayscale opacity-50" data-alt="Waves crashing against cliffs" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBC3dtqQy_lVoORXf1yBbnAOOqeaBf6bs6JwxEAzRDFNWCpX8kXDYQC1a99tV4KYkWikGeuF-QzGRSooLvwtx8E3YIVF96zreFVRROsNNlUrofALxc1TgYbR3uLmBnZNQZ9_8u7T5bDqOIXN7uoNcA28iwesQUDKsIrYhqqk5BvZjjmQ1uYZfbE1lxVC9Tle7SvogoRfgyiXGQLIrBanEAOLcpSHAPLjHD0Lj79s-YmjqWHgCEIHRJ0LbbR5HqAPbdutl8_a2Ov2zE&quot;);"></div>
+<div class="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-black/40">
+<div class="h-12 w-12 rounded-full border-2 border-accent-green/30 border-t-accent-green animate-spin"></div>
+<span class="text-[10px] font-bold text-accent-green drop-shadow-[0_0_8px_#39ff14]" style="">PROCESSING...</span>
+</div>
+</div>
+<div class="flex items-center justify-between px-1">
+<span class="text-xs font-medium text-slate-400" style="">Scene 02</span>
+</div>
+</div>
+<!-- Scene 03 -->
+<div class="group relative flex flex-col gap-2 rounded-xl bg-slate-800/10 p-2 border border-border-dark">
+<div class="relative aspect-[9/16] w-full overflow-hidden rounded-lg bg-slate-900 border border-slate-700/50">
+<div class="h-full w-full bg-cover bg-center opacity-30 blur-sm" data-alt="Italian village lights at dusk" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuD2SxaPbl5i3BcVyyiWZNME517Bb-fffNbkD-ZvkG7ZRf84QHhIDb5Iu4_HfiEYFvS87swKjMjAF6d3eyBKhbsk8gPU2yKnGrLaLoQ82wwBksubmTnlzkH3NZr7uPjqDEjfdOrzRCoZVqEaueawTUGPTOI4VdCH4gnyRthtCWDNB2NoReLeCZEMWW8DjPAfw4vRXt5_Jni-haCglUyMBli2-BFT1JLTdiAPTewxLVWNyNXXHOrz8B8WmxqUMqxs9zeIwQBnHFkUk64&quot;);"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-600" style="">hourglass_top</span>
+</div>
+</div>
+<div class="flex items-center justify-between px-1">
+<span class="text-xs font-medium text-slate-500" style="">Scene 03 (Queued)</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Center Workspace -->
+<section class="relative flex flex-1 items-center justify-center bg-background-dark p-8">
+<div class="relative aspect-[9/16] h-full max-h-[85vh] overflow-hidden rounded-2xl bg-black shadow-2xl ring-1 ring-white/10">
+<div class="h-full w-full bg-cover bg-center" data-alt="Cinematic mountain view with clouds moving through peaks" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBKMMBrdwSUzugYmQxxoRBhrtUcdITIEz7d82dO5ANxogP3OjoDET7aRTKnJulkmb6pTEjOcDF8M3wxFaaJmNy6DJjpnR-I3QO2SWgVm6M9fQtdecv-zSexE1-fWkzkZZ1b0_Kqfk80tTy9hpAHLQSjtl8Ueo26RZlFZefFX9Gcf1MKNt2sdB2KCOHqQN9WKB7-TAcpIAkrOBTH39b_FbBUwTzEzgrvv-IMnXD47ItxOuWF-IFTqWqw_qK-yKbLoUyVO4Ytcse8orI&quot;);"></div>
+<!-- Safe Zone Overlay -->
+<div class="absolute inset-4 pointer-events-none rounded-lg border border-dashed border-white/10 flex items-start justify-center pt-2">
+<span class="text-[10px] font-medium text-white/20 uppercase tracking-widest" style="">Safe Zone Area</span>
+</div>
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 rounded-full bg-black/40 px-6 py-3 backdrop-blur-xl border border-white/10">
+<button class="material-symbols-outlined text-slate-300 hover:text-white" style="">skip_previous</button>
+<button class="material-symbols-outlined text-3xl text-white" style="">play_circle</button>
+<button class="material-symbols-outlined text-slate-300 hover:text-white" style="">skip_next</button>
+</div>
+</div>
+</section>
+<!-- Right Sidebar: Tabs -->
+<aside class="flex w-80 flex-col border-l border-border-dark bg-panel-dark">
+<div class="flex border-b border-border-dark">
+<button class="flex-1 border-b-2 border-accent-green py-4 text-[10px] font-bold uppercase tracking-widest text-accent-green" style="">Scene</button>
+<button class="flex-1 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-500 hover:text-slate-300" style="">Project</button>
+</div>
+<div class="flex flex-1 flex-col overflow-y-auto p-5 gap-6 custom-scrollbar">
+<!-- Scene Settings Content -->
+<div class="flex flex-col gap-5">
+<div class="space-y-2">
+<label class="text-[10px] font-bold uppercase tracking-widest text-slate-400" style="">Scene Name</label>
+<input class="w-full rounded-lg border border-border-dark bg-slate-800/50 px-3 py-2 text-sm text-slate-100 focus:border-accent-green focus:ring-0" type="text" value="Scene 01 - Amalfi Dusk">
+</div>
+<div class="space-y-2">
+<label class="text-[10px] font-bold uppercase tracking-widest text-slate-400" style="">Scene Context (AI Prompt)</label>
+<textarea class="w-full rounded-lg border border-border-dark bg-slate-800/50 px-3 py-2 text-sm text-slate-100 focus:border-accent-green focus:ring-0 resize-none" placeholder="Describe the scene's emotional weight and lighting details..." rows="4">Deep golden hour, volumetric lighting, slight mist over the Mediterranean, hyper-realistic parallax depth.</textarea>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] font-bold uppercase tracking-widest text-slate-400" style="">Motion Preset</label>
+<div class="relative">
+<select class="w-full appearance-none rounded-lg border border-border-dark bg-slate-800/50 px-3 py-2 text-sm text-slate-100 focus:border-accent-green focus:ring-0">
+<option>Standard Pan</option>
+<option selected="">Cinematic Push</option>
+<option>Parallax Tilt</option>
+<option>Vertical Scroll</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2 pointer-events-none text-slate-500" style="">expand_more</span>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between">
+<label class="text-[10px] font-bold uppercase tracking-widest text-slate-400" style="">Motion Intensity</label>
+<span class="text-[10px] font-bold text-accent-green" style="">75%</span>
+</div>
+<input class="w-full accent-accent-green bg-slate-800 h-1.5 rounded-full appearance-none cursor-pointer" type="range">
+</div>
+<div class="space-y-2">
+<label class="text-[10px] font-bold uppercase tracking-widest text-slate-400" style="">Depth Focus</label>
+<div class="grid grid-cols-3 gap-1 rounded-lg bg-slate-800/50 p-1">
+<button class="rounded-md py-1.5 text-[10px] font-bold text-slate-400 hover:text-white uppercase" style="">Subject</button>
+<button class="rounded-md bg-slate-700 py-1.5 text-[10px] font-bold text-accent-green uppercase" style="">Balanced</button>
+<button class="rounded-md py-1.5 text-[10px] font-bold text-slate-400 hover:text-white uppercase" style="">Background</button>
+</div>
+</div>
+<!-- Project Settings Section (Visible if user clicks tab, but shown here as requested) -->
+<div class="pt-4 border-t border-border-dark space-y-5">
+<h3 class="text-[10px] font-black uppercase tracking-widest text-slate-600" style="">Global Settings</h3>
+<div class="space-y-2">
+<label class="text-[10px] font-bold uppercase tracking-widest text-slate-400" style="">Project Context</label>
+<textarea class="w-full rounded-lg border border-border-dark bg-slate-800/50 px-3 py-2 text-sm text-slate-100 focus:border-accent-green focus:ring-0 resize-none" rows="2">A cinematic journey along the Italian coast during summer sunset.</textarea>
+</div>
+<div class="flex items-center justify-between">
+<label class="text-[10px] font-bold uppercase tracking-widest text-slate-400" style="">Story Pace</label>
+<div class="flex items-center gap-2 rounded-full bg-slate-800/50 px-2 py-1">
+<span class="text-[10px] font-bold px-2 py-0.5 rounded-full text-slate-500" style="">Calm</span>
+<span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-accent-green text-background-dark" style="">Balanced</span>
+<span class="text-[10px] font-bold px-2 py-0.5 rounded-full text-slate-500" style="">Fast</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<label class="text-[10px] font-bold uppercase tracking-widest text-slate-400" style="">Reduced Motion</label>
+<button class="relative h-5 w-10 rounded-full bg-slate-700" style="">
+<div class="absolute left-1 top-1 h-3 w-3 rounded-full bg-slate-400"></div>
+</button>
+</div>
+<div class="flex items-center justify-between rounded-lg bg-slate-900/50 border border-border-dark p-3">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold uppercase tracking-widest text-slate-500" style="">Output Format</span>
+<span class="text-sm font-bold text-slate-300" style="">9:16 Portrait</span>
+</div>
+<span class="material-symbols-outlined text-slate-600" style="">lock</span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-5 border-t border-border-dark">
+<button class="flex w-full items-center justify-center gap-2 rounded-lg border border-accent-green/30 bg-accent-green/10 py-3 text-xs font-bold uppercase tracking-widest text-accent-green hover:bg-accent-green hover:text-background-dark transition-all" style="">
+<span class="material-symbols-outlined" style="">restart_alt</span> Reprocess Scene
+                    </button>
+</div>
+</aside>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,23 @@
+## Error Type
+Runtime Error
+
+## Error Message
+Cannot find module './543.js'
+Require stack:
+- /Users/will/Desktop/IG-sage-reel-ai/.next/server/webpack-runtime.js
+- /Users/will/Desktop/IG-sage-reel-ai/.next/server/pages/_document.js
+- /Users/will/Desktop/IG-sage-reel-ai/node_modules/next/dist/server/require.js
+- /Users/will/Desktop/IG-sage-reel-ai/node_modules/next/dist/server/load-components.js
+- /Users/will/Desktop/IG-sage-reel-ai/node_modules/next/dist/build/utils.js
+- /Users/will/Desktop/IG-sage-reel-ai/node_modules/next/dist/build/swc/options.js
+- /Users/will/Desktop/IG-sage-reel-ai/node_modules/next/dist/build/swc/index.js
+- /Users/will/Desktop/IG-sage-reel-ai/node_modules/next/dist/build/next-config-ts/transpile-config.js
+- /Users/will/Desktop/IG-sage-reel-ai/node_modules/next/dist/server/config.js
+- /Users/will/Desktop/IG-sage-reel-ai/node_modules/next/dist/server/next.js
+- /Users/will/Desktop/IG-sage-reel-ai/node_modules/next/dist/server/lib/start-server.js
+
+
+    at <unknown> (.next/server/app/page.js:2:20438)
+    at Object.<anonymous> (.next/server/app/page.js:2:20492)
+
+Next.js version: 15.5.12 (Webpack)

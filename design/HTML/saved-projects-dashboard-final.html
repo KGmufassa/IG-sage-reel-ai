@@ -1,0 +1,255 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Projects - Parallax Story Composer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#38f91a",
+                        "background-light": "#f6f8f5",
+                        "background-dark": "#0c140a",
+                        "graphite": "#1a2418",
+                        "graphite-light": "#2a3a27",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #2a3a27;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen selection:bg-primary/30">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Global Navbar -->
+<header class="sticky top-0 z-50 w-full border-b border-graphite-light bg-background-dark/80 backdrop-blur-md px-6 lg:px-20 py-3">
+<div class="max-w-[1440px] mx-auto flex items-center justify-between gap-4">
+<div class="flex items-center gap-3 group cursor-pointer">
+<div class="p-1.5 bg-primary rounded-lg text-background-dark shadow-[0_0_15px_rgba(56,249,26,0.3)]">
+<span class="material-symbols-outlined block text-2xl font-bold" style="">auto_awesome_motion</span>
+</div>
+<h1 class="text-slate-100 text-xl font-bold tracking-tight" style="">Parallax<span class="text-primary" style="">Story</span></h1>
+</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#" style="">Dashboard</a>
+<a class="text-primary text-sm font-medium border-b-2 border-primary pb-1" href="#" style="">Projects</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#" style="">New Project</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden sm:flex items-center gap-2 bg-primary hover:bg-primary/90 text-background-dark px-4 py-2 rounded-lg font-bold text-sm transition-all active:scale-95 shadow-lg shadow-primary/20" style="">
+<span class="material-symbols-outlined text-sm" style="">add</span>
+                        New Project
+                    </button>
+<div class="h-10 w-10 rounded-full border-2 border-graphite-light overflow-hidden bg-primary/10 flex items-center justify-center">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="User profile avatar illustration" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIKI7RuQ1MXZVuqHAXBUOT8Z8QUPfNZIXOq_AIqIvBxDCOTIE2IgYbKvFHd52mJx9YV0sQicNEAQnAbP5NhWniI_yiMrdSilvnqEBA_V2TQvYF75jjol9BtYyzrMWb3SpMm1uLClD9o1dcuu_VoAkhZ6LsajhndD8-ajjhz_y7y3nA_03zfF0axFSBoWVR38qg5kqrtHgyM6CasbokDpJ-441SYa-qktwqWlhNb0PjUUWIrMLkkV_1cGMyHx6Q291krO-FyocCsL0" style="">
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 w-full max-w-[1440px] mx-auto px-6 lg:px-20 py-10">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+<div class="space-y-2">
+<h2 class="text-4xl lg:text-5xl font-bold text-slate-100 tracking-tight" style="">Your Projects</h2>
+<p class="text-slate-400 max-w-md" style="">Manage and edit your cinematic story sequences. You have 12 active sequences in your library.</p>
+</div>
+<button class="md:hidden flex w-full items-center justify-center gap-2 bg-primary text-background-dark px-6 py-3 rounded-xl font-bold transition-transform active:scale-95" style="">
+<span class="material-symbols-outlined" style="">add</span>
+                    Create New Sequence
+                </button>
+</div>
+<!-- Controls Row -->
+<div class="flex flex-wrap items-center gap-4 mb-8">
+<div class="flex-1 min-w-[280px]">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors" style="">search</span>
+<input class="w-full bg-graphite border-graphite-light focus:border-primary focus:ring-1 focus:ring-primary text-slate-100 rounded-xl pl-12 pr-4 py-3 placeholder:text-slate-500 transition-all" placeholder="Search projects by title or scene..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative">
+<select class="appearance-none bg-graphite border-graphite-light text-slate-100 py-3 pl-4 pr-10 rounded-xl focus:ring-1 focus:ring-primary focus:border-primary cursor-pointer">
+<option>Sort by: Recent</option>
+<option>Sort by: Name</option>
+<option>Sort by: Scenes</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400" style="">expand_more</span>
+</div>
+<button class="flex items-center gap-2 bg-graphite border border-graphite-light hover:border-primary transition-colors px-4 py-3 rounded-xl text-slate-100" style="">
+<span class="material-symbols-outlined text-xl" style="">filter_list</span>
+<span class="hidden sm:inline" style="">Filter</span>
+</button>
+</div>
+</div>
+<!-- Project Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Project Card 1: Renderable -->
+<div class="group bg-graphite border border-graphite-light rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/5">
+<div class="relative aspect-[9/16] overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent z-10 opacity-60"></div>
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Cinematic mountain landscape with purple mist" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3rh2vc_ShENc9RR_DKqjTjm7lr3qV8bcmDPF6bcny9sy0G87IlhAn86umMKi8EKUAOaga6d4J2OY1CwPZ4a-WEfhl_V6xUkxMyopMI3-caa-9Cd1TK5SdyARlwz2r-IyZZasdA2DcQHaxGOjlcxXsUNMfIYgRh_tZi8NPkG2p22LU-hh7kVhiQ8q2QD1lyKx3pq7MMHpkrCJwV4AMbPNn5Hr0aiUrCCIiIJI5RDVPicGe_LM04tsHDImJnTn9olHtHfCYhnq7EQE" style="">
+<div class="absolute top-4 left-4 z-20">
+<span class="bg-primary text-background-dark text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full shadow-lg" style="">Renderable</span>
+</div>
+<div class="absolute bottom-4 left-4 right-4 z-20 flex flex-col gap-1">
+<h3 class="text-lg font-bold text-white line-clamp-1" style="">Misty Peaks Cinematic</h3>
+<div class="flex items-center gap-3 text-slate-300 text-xs">
+<span class="flex items-center gap-1" style=""><span class="material-symbols-outlined text-sm" style="">movie</span> 12 Scenes</span>
+<span class="flex items-center gap-1" style=""><span class="material-symbols-outlined text-sm" style="">schedule</span> 2h ago</span>
+</div>
+</div>
+</div>
+<div class="p-3 grid grid-cols-2 gap-2">
+<button class="col-span-2 bg-primary/10 hover:bg-primary text-primary hover:text-background-dark py-2.5 rounded-lg text-sm font-bold transition-all flex items-center justify-center gap-2" style="">
+<span class="material-symbols-outlined text-sm" style="">edit</span> Open Editor
+                        </button>
+<button class="bg-graphite-light/50 hover:bg-graphite-light text-slate-100 py-2 rounded-lg text-xs font-medium transition-all flex items-center justify-center gap-1" style="">
+<span class="material-symbols-outlined text-sm" style="">play_arrow</span> Preview
+                        </button>
+<button class="bg-graphite-light/50 hover:bg-graphite-light text-slate-100 py-2 rounded-lg text-xs font-medium transition-all flex items-center justify-center gap-1" style="">
+<span class="material-symbols-outlined text-sm" style="">download</span> Export
+                        </button>
+</div>
+</div>
+<!-- Project Card 2: Processing -->
+<div class="group bg-graphite border border-graphite-light rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-300">
+<div class="relative aspect-[9/16] overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent z-10 opacity-60"></div>
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-70" data-alt="Neon lit cyberpunk city district" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoFq8kkz8XD3_sHKB4gbYv7biPF8GIE7kB6LO0hdVOty_oErCp79YiiIXxT5Um5XN0aLD5pa-tfNFL3T4CLTdKZ4tnAVsDOmVFPzhXIejL0Ti_7a-grst3W-t1vYMNqHmHdmgZ9X661JBBo8csic6KhfwbqwlmYMsuolpwbCKM6SKFcM0gQBoY2gbEH6yy-cm0Udj9SO6ev1YNAdl2pps9volpI1vXPb46skf8BFfDjsJnJfgQH5ejkWp5-m2ybsSZs0B8XOjPoKs" style="">
+<div class="absolute inset-0 flex items-center justify-center z-20">
+<div class="bg-background-dark/80 backdrop-blur-sm p-4 rounded-2xl flex flex-col items-center gap-3 border border-primary/20">
+<span class="material-symbols-outlined animate-spin text-primary text-3xl" style="">sync</span>
+<span class="text-primary text-[10px] font-bold uppercase tracking-wider" style="">Processing 64%</span>
+</div>
+</div>
+<div class="absolute bottom-4 left-4 right-4 z-20 flex flex-col gap-1">
+<h3 class="text-lg font-bold text-white line-clamp-1" style="">Neon District 2077</h3>
+<div class="flex items-center gap-3 text-slate-300 text-xs">
+<span class="flex items-center gap-1" style=""><span class="material-symbols-outlined text-sm" style="">movie</span> 45 Scenes</span>
+<span class="flex items-center gap-1" style=""><span class="material-symbols-outlined text-sm" style="">schedule</span> 5h ago</span>
+</div>
+</div>
+</div>
+<div class="p-3 grid grid-cols-2 gap-2">
+<button class="col-span-2 bg-graphite-light/20 text-slate-500 py-2.5 rounded-lg text-sm font-bold cursor-not-allowed flex items-center justify-center gap-2" disabled="" style="">
+<span class="material-symbols-outlined text-sm" style="">lock</span> Processing...
+                        </button>
+<button class="bg-graphite-light/50 hover:bg-graphite-light text-slate-100 py-2 rounded-lg text-xs font-medium transition-all flex items-center justify-center gap-1" style="">
+<span class="material-symbols-outlined text-sm" style="">visibility</span> Preview
+                        </button>
+<button class="bg-graphite-light/50 hover:bg-red-500/20 hover:text-red-500 text-slate-400 py-2 rounded-lg text-xs font-medium transition-all flex items-center justify-center gap-1" style="">
+<span class="material-symbols-outlined text-sm" style="">delete</span> Delete
+                        </button>
+</div>
+</div>
+<!-- Project Card 3: Draft -->
+<div class="group bg-graphite border border-graphite-light rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-300">
+<div class="relative aspect-[9/16] overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent z-10 opacity-60"></div>
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Golden hour desert landscape dunes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjHqqSUJGnNViyVkKel9HZFklvYP7NR4rAq396D1PziqpLKA6rYsGdblMWwlWfbSSffp-tLLoV_3E9LOP5tnnxTyAwfOCyII4AEZ-AI4KjHcoUiwfzOc87Cepq7vZKKb6rfhgV3t_wlNFegZZYZPIPsBtw6WtPssKM7TUvEHD4cKgeuE_UA4J2UhxDDNXYg-9CcsjXVk7g96CXr5CLJNzdgPk1tdFm5JSK-ApQ5kSrQz_Vj17zSKbYcsQBbyY1utKQ75qHq399LYg" style="">
+<div class="absolute top-4 left-4 z-20">
+<span class="bg-slate-700 text-slate-100 text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full shadow-lg" style="">Draft</span>
+</div>
+<div class="absolute bottom-4 left-4 right-4 z-20 flex flex-col gap-1">
+<h3 class="text-lg font-bold text-white line-clamp-1" style="">Desert Mirage</h3>
+<div class="flex items-center gap-3 text-slate-300 text-xs">
+<span class="flex items-center gap-1" style=""><span class="material-symbols-outlined text-sm" style="">movie</span> 8 Scenes</span>
+<span class="flex items-center gap-1" style=""><span class="material-symbols-outlined text-sm" style="">schedule</span> 1d ago</span>
+</div>
+</div>
+</div>
+<div class="p-3 grid grid-cols-2 gap-2">
+<button class="col-span-2 bg-primary hover:bg-primary/90 text-background-dark py-2.5 rounded-lg text-sm font-bold transition-all flex items-center justify-center gap-2" style="">
+<span class="material-symbols-outlined text-sm" style="">edit</span> Continue Editing
+                        </button>
+<button class="bg-graphite-light/50 hover:bg-graphite-light text-slate-100 py-2 rounded-lg text-xs font-medium transition-all flex items-center justify-center gap-1" style="">
+<span class="material-symbols-outlined text-sm" style="">play_arrow</span> Preview
+                        </button>
+<button class="bg-graphite-light/50 hover:bg-red-500/20 hover:text-red-500 text-slate-400 py-2 rounded-lg text-xs font-medium transition-all flex items-center justify-center gap-1" style="">
+<span class="material-symbols-outlined text-sm" style="">delete</span> Delete
+                        </button>
+</div>
+</div>
+<!-- Project Card 4: Renderable -->
+<div class="group bg-graphite border border-graphite-light rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-300">
+<div class="relative aspect-[9/16] overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent z-10 opacity-60"></div>
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Urban cityscape with blue and pink lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBW5wzJSHcAEggO2RYApU0PRnjWdyvBLXYfVfHK4flfPwMOaAZiwtIBuRZRJauseEfSlhK0TS6eHIeVOD9hGUIZsGpI4PYbqJneCK9zGBw9BMDuOJHrnmiEksL064I3nES0IPl8aF_fDmtUXC4iEQDLcHXQTuMQpjrfCppPou9Tbijdta9YZXYw3rjVfbgKsFsbw6PdN3kFBhwSz_hPWIYP2ZzejAk9u3QvmjgrUGFbXerUhR7SgwH-vbJI4LYoXx240AHQ76sBnw" style="">
+<div class="absolute top-4 left-4 z-20">
+<span class="bg-primary text-background-dark text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full shadow-lg" style="">Renderable</span>
+</div>
+<div class="absolute bottom-4 left-4 right-4 z-20 flex flex-col gap-1">
+<h3 class="text-lg font-bold text-white line-clamp-1" style="">Cyber Cityscape</h3>
+<div class="flex items-center gap-3 text-slate-300 text-xs">
+<span class="flex items-center gap-1" style=""><span class="material-symbols-outlined text-sm" style="">movie</span> 32 Scenes</span>
+<span class="flex items-center gap-1" style=""><span class="material-symbols-outlined text-sm" style="">schedule</span> 2d ago</span>
+</div>
+</div>
+</div>
+<div class="p-3 grid grid-cols-2 gap-2">
+<button class="col-span-2 bg-primary/10 hover:bg-primary text-primary hover:text-background-dark py-2.5 rounded-lg text-sm font-bold transition-all flex items-center justify-center gap-2" style="">
+<span class="material-symbols-outlined text-sm" style="">edit</span> Open Editor
+                        </button>
+<button class="bg-graphite-light/50 hover:bg-graphite-light text-slate-100 py-2 rounded-lg text-xs font-medium transition-all flex items-center justify-center gap-1" style="">
+<span class="material-symbols-outlined text-sm" style="">play_arrow</span> Preview
+                        </button>
+<button class="bg-graphite-light/50 hover:bg-graphite-light text-slate-100 py-2 rounded-lg text-xs font-medium transition-all flex items-center justify-center gap-1" style="">
+<span class="material-symbols-outlined text-sm" style="">download</span> Export
+                        </button>
+</div>
+</div>
+</div>
+<!-- Empty State / New project teaser -->
+<div class="mt-12 p-8 border-2 border-dashed border-graphite-light rounded-2xl flex flex-col items-center justify-center text-center gap-4 bg-graphite/30">
+<div class="size-16 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-4xl" style="">create_new_folder</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-slate-100" style="">Ready to start something new?</h3>
+<p class="text-slate-400 max-w-sm mt-1" style="">Harness the power of parallax layers and cinematic AI to bring your stories to life.</p>
+</div>
+<button class="bg-primary text-background-dark px-8 py-3 rounded-xl font-black text-sm uppercase tracking-wider hover:scale-105 transition-transform active:scale-95 shadow-xl shadow-primary/10" style="">
+                    New Project
+                </button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full max-w-[1440px] mx-auto px-6 lg:px-20 py-10 border-t border-graphite-light mt-10">
+<div class="flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="">auto_awesome_motion</span>
+<span class="text-slate-400 text-sm font-medium" style="">© 2024 Parallax Story Composer. All rights reserved.</span>
+</div>
+<div class="flex gap-8 text-sm text-slate-500 font-medium">
+<a class="hover:text-primary transition-colors" href="#" style="">Documentation</a>
+<a class="hover:text-primary transition-colors" href="#" style="">API Reference</a>
+<a class="hover:text-primary transition-colors" href="#" style="">Support</a>
+<a class="hover:text-primary transition-colors" href="#" style="">Terms</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>
